@@ -59,3 +59,8 @@ def add_to_answer_queue(answer_id):
     t = int(time.time())
     r.lpush(CONST.REDIS_CLAWED_ANSWER_IDS,answer_id)
 
+# 添加到用户队列中
+def add_to_user_queue(user_id):
+    t = int(time.time())
+    r.lpush(CONST.REDIS_TOCLAW_USER_IDS,user_id)
+
