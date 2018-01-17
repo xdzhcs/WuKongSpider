@@ -36,17 +36,14 @@ class QuestionSpider:
                 question = q['question']
                 question['behot_time']=q['behot_time']
                 answer = q['answer']
+                user = answer['user']
+                #保存到mongodb
                 mg.save_answer(answer)
                 mg.save_question(question)
-                # rds.add_to_question_queue(q['qid'])
-                # rds.add_to_user_queue(q['question']['user']['user_id'])
-                # rds.add_to_user_queue(q['question']['answer']['user']['user_id'])
-
-
-
-
-
-
+                mg.save_user(user)
+                #添加到队列
+                rds.add_to_question_queue(question['qid'])
+                rds.add_to_user_queue(user['user_id'])
 
 class AnswerSpider:
     pass

@@ -37,9 +37,9 @@ def add_clawed_comment_id(ans_id):
 
 
 # 添加已经爬取过的用户id
-def add_clawed_user_id(ans_id):
+def add_clawed_user_id(user_id):
     t = int(time.time())
-    r.zadd(CONST.REDIS_CLAWED_COMMENT_IDS,ans_id,t)
+    r.zadd(CONST.REDIS_TOCLAW_USER_IDS,user_id,t)
 
 
 # 添加到问题队列中
